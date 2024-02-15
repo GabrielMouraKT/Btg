@@ -25,4 +25,4 @@ Versão 1.0 (desafio)
 
 ![image](https://github.com/GabrielMouraKT/Desafio/assets/69040085/377df5d0-0c2c-4d7c-88ef-48fedc8c1bae)
 ![image](https://github.com/GabrielMouraKT/Desafio/assets/69040085/b72e72c3-1118-4658-8b40-3c871e1332d3)
-# Btg
+
