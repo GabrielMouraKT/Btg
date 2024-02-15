@@ -5,17 +5,31 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:charts="clr-namespace:Microcharts.Maui;assembly=Microcharts.Maui"
     Title="ChartPage">
-    <VerticalStackLayout>
-        <!--  ... (outros elementos) ...  -->
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
 
-        <Entry Placeholder="Preço Inicial" Text="{Binding PrecoInicial}" />
-        <Entry Placeholder="Volatilidade" Text="{Binding Volatilidade}" />
-        <Entry Placeholder="Média do Retorno" Text="{Binding MediaRetorno}" />
-        <Entry Placeholder="Tempo" Text="{Binding Tempo}" />
+        <charts:ChartView
+            x:Name="myChart"
+            Grid.Column="0"
+            MaximumWidthRequest="1000"
+            MinimumHeightRequest="300" />
 
-        <!--  ... (outros elementos) ...  -->
 
-        <charts:ChartView x:Name="myChart" HeightRequest="300" />
-        <Button Clicked="GerarGraficoButton_Clicked" Text="Gerar Simulação" />
-    </VerticalStackLayout>
+        <StackLayout Grid.Column="1"
+                     Margin="50,10">
+            <Label Text="Preço inicial" />
+            <Entry Placeholder="Preço Inicial" Text="{Binding PrecoInicial}" />
+            <Label Text="Volatilidade" />
+            <Entry Placeholder="Volatilidade" Text="{Binding Volatilidade}" />
+            <Label Text="Média do Retorno" />
+            <Entry Placeholder="Média do Retorno" Text="{Binding MediaRetorno}" />
+            <Label Text="Tempo" />
+            <Entry Placeholder="Tempo" Text="{Binding Tempo}" />
+
+            <Button Clicked="GerarGraficoButton_Clicked" Text="Gerar Simulação" />
+        </StackLayout>
+    </Grid>
 </ContentPage>

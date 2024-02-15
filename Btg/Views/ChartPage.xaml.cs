@@ -17,41 +17,32 @@ namespace Btg.Views
         private void GerarGraficoButton_Clicked(object sender, EventArgs e)
         {
             // Aqui você pode acessar os valores da ViewModel
-            // viewModel.PrecoInicial, viewModel.Volatilidade, viewModel.MediaRetorno, viewModel.Tempo
+            double precoInicialValue = viewModel.PrecoInicial;
+            double volatilidadeValue = viewModel.Volatilidade;
+            double mediaRetornoValue = viewModel.MediaRetorno;
+            double tempoValue = viewModel.Tempo;
 
-            // Use esses valores para gerar os dados do gráfico
-            ChartEntry[] brownianoEntries = new[]
+            // Calcula o preço usando a função GenerateBrownianMotion
+            double[] simulatedPrices = Btg.Utils.SimulationUtils.GenerateBrownianMotion(volatilidadeValue, mediaRetornoValue, precoInicialValue, (int)tempoValue);
+
+            // Cria os ChartEntries com base nos preços simulados
+            ChartEntry[] brownianoEntries = new ChartEntry[simulatedPrices.Length];
+            for (int i = 0; i < simulatedPrices.Length; i++)
             {
-                new ChartEntry((float)viewModel.PrecoInicial)
+                brownianoEntries[i] = new ChartEntry((float)simulatedPrices[i])
                 {
-                    Label = "Preço Inicial",
-                    ValueLabel = viewModel.PrecoInicial.ToString(),
                     Color = SKColor.Parse("#266489")
-                },
-                new ChartEntry((float)viewModel.Volatilidade)
-                {
-                    Label = "Volatilidade",
-                    ValueLabel = viewModel.Volatilidade.ToString(),
-                    Color = SKColor.Parse("#68B9C0")
-                },
-                new ChartEntry((float)viewModel.MediaRetorno)
-                {
-                    Label = "Média do Retorno",
-                    ValueLabel = viewModel.MediaRetorno.ToString(),
-                    Color = SKColor.Parse("#90D585")
-                },
-                new ChartEntry((float)viewModel.Tempo)
-                {
-                    Label = "Tempo",
-                    ValueLabel = viewModel.Tempo.ToString(),
-                    Color = SKColor.Parse("#68b9d0")
-                },
-            };
+                };
+            }
 
-            // Aqui você pode usar 'brownianoEntries' para atualizar o gráfico
+            // Atualiza o gráfico como um gráfico de linha
             myChart.Chart = new LineChart()
             {
-                Entries = brownianoEntries
+                Entries = brownianoEntries,
+                LineMode = LineMode.Spline,
+                LineSize = 1,
+                PointMode = PointMode.None, // Remover pontos
+                LabelTextSize = 0 // Define o tamanho do texto do rótulo como 0 para ocultar os rótulos dos dias
             };
         }
     }
