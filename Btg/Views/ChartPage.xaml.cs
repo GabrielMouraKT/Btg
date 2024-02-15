@@ -31,9 +31,11 @@ namespace Btg.Views
             {
                 brownianoEntries[i] = new ChartEntry((float)simulatedPrices[i])
                 {
-                    Color = SKColor.Parse("#266489")
+                    Color = SKColor.Parse("#7a00dd")
                 };
             }
+
+
 
             // Atualiza o gráfico como um gráfico de linha
             myChart.Chart = new LineChart()

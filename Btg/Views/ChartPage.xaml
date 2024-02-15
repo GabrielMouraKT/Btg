@@ -11,25 +11,45 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <charts:ChartView
-            x:Name="myChart"
-            Grid.Column="0"
-            MaximumWidthRequest="1000"
-            MinimumHeightRequest="300" />
+        <Frame>
+            <charts:ChartView
+                x:Name="myChart"
+                Grid.Column="0"
+                MaximumWidthRequest="1000"
+                MinimumHeightRequest="300" />
+        </Frame>
 
 
-        <StackLayout Grid.Column="1"
-                     Margin="50,10">
-            <Label Text="Preço inicial" />
+
+        <StackLayout Grid.Column="1" Margin="50,100">
+            <Label
+                Margin="0,8,0,8"
+                FontAttributes="Bold"
+                Text="Preço inicial" />
             <Entry Placeholder="Preço Inicial" Text="{Binding PrecoInicial}" />
-            <Label Text="Volatilidade" />
+            <Label
+                Margin="0,8,0,8"
+                FontAttributes="Bold"
+                Text="Volatilidade Média(%)" />
             <Entry Placeholder="Volatilidade" Text="{Binding Volatilidade}" />
-            <Label Text="Média do Retorno" />
+            <Label
+                Margin="0,8,0,8"
+                FontAttributes="Bold"
+                Text="Retorno Médio(%)" />
             <Entry Placeholder="Média do Retorno" Text="{Binding MediaRetorno}" />
-            <Label Text="Tempo" />
+            <Label
+                Margin="0,8,0,8"
+                FontAttributes="Bold"
+                Text="Tempo (dias)" />
             <Entry Placeholder="Tempo" Text="{Binding Tempo}" />
 
-            <Button Clicked="GerarGraficoButton_Clicked" Text="Gerar Simulação" />
+            <Button
+                Margin="0,20"
+                BackgroundColor="White"
+                Clicked="GerarGraficoButton_Clicked"
+                FontAttributes="Bold"
+                Text="Gerar Simulação"
+                TextColor="Purple" />
         </StackLayout>
     </Grid>
 </ContentPage>
