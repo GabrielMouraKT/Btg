@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Btg.Views.ChartPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:charts="clr-namespace:Microcharts.Maui;assembly=Microcharts.Maui"
+    Title="ChartPage">
+    <VerticalStackLayout>
+        <!--  ... (outros elementos) ...  -->
+
+        <Entry Placeholder="Preço Inicial" Text="{Binding PrecoInicial}" />
+        <Entry Placeholder="Volatilidade" Text="{Binding Volatilidade}" />
+        <Entry Placeholder="Média do Retorno" Text="{Binding MediaRetorno}" />
+        <Entry Placeholder="Tempo" Text="{Binding Tempo}" />
+
+        <!--  ... (outros elementos) ...  -->
+
+        <charts:ChartView x:Name="myChart" HeightRequest="300" />
+        <Button Clicked="GerarGraficoButton_Clicked" Text="Gerar Simulação" />
+    </VerticalStackLayout>
+</ContentPage>
